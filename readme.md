@@ -1,4 +1,10 @@
 # Cinema Reservation App 
+
+## Tech Stack
+- Python 3.7
+- Django Rest Framework 3.9.4
+- Angular 7
+
 ## How to  run locally
 
 - Install python 3.7
