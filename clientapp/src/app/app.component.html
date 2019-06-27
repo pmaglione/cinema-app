@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" routerLink="/projections">Projections</a>
+        <a class="nav-item nav-link" routerLink="/checkout">Reservations</a>
+    </div>
+    <div class="navbar-nav ml-auto" *ngIf="currentUser">
+        <a class="nav-item nav-link" style="color:white;" routerLink="/">Hi {{ currentUser.username }}!</a>
+        <a class="nav-item nav-link" style="color:red;" (click)="logout()">Logout</a>
+    </div>
+    <div class="navbar-nav ml-auto" *ngIf="currentUser == null">
+        <a class="nav-item nav-link" style="color:white;" routerLink="login">Login</a>
+        <a class="nav-item nav-link" style="color:white;" routerLink="register">Register</a>
+    </div>
+</nav>
+
+
+<div class="jumbotron">
+      <div class="container">
+        <h2>CinemaApp!</h2>
+      </div>
+</div>
+
+<div class="col-sm-12">
+    <alert></alert>
+    <router-outlet></router-outlet>
+</div>
+
+
+
+

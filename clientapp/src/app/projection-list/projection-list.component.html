@@ -1,0 +1,59 @@
+<div class="content">
+  <h3>Projections List:</h3>
+  <div class="col col-md-12" *ngIf="appComponent.currentUser == null">
+    <span class="text-info">In order to make a reservation you need to be logged in!</span>
+  </div>
+
+  <div class="col text-center col-md-12">
+    <div class="form-row align-items-center">
+      <div class="col-auto"><h3>Filters:</h3></div>
+      <div class="col-auto">
+        <label class="sr-only">Movie:</label>
+        <input class="form-control mb-2" [(ngModel)]="movieText" placeholder="Movie...">
+      </div>
+      <div class="col-auto">
+        <label class="sr-only">Cinema:</label>
+        <input class="form-control mb-2" [(ngModel)]="cinemaText" placeholder="Cinema...">
+      </div>
+      <div class="col-auto">
+        <label class="sr-only">Room:</label>
+        <input class="form-control mb-2" [(ngModel)]="roomText" placeholder="Room...">
+      </div>
+      <div class="col-auto">
+        <label class="sr-only">Date:</label>
+        <input class="form-control mb-2" [(ngModel)]="dateText" placeholder="Date...">
+      </div>
+      <div class="col-auto">
+        <label class="sr-only">Start time:</label>
+        <input class="form-control mb-2" [(ngModel)]="startTimeText" placeholder="Start time...">
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Movie</th>
+        <th>Cinema</th>
+        <th>Room</th>
+        <th>Date</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let proj of projections | projection_filter: movieText:cinemaText:roomText:dateText:startTimeText">
+        <td>{{ proj.movie.name }}</td>
+        <td>{{ proj.room.cinema.name }}</td>
+        <td>{{ proj.room.number }}</td>
+        <td>{{ proj.date }}</td>
+        <td>{{ proj.start_time }}</td>
+        <td>{{ proj.end_time }}</td>
+        <td><a [routerLink]="['/projection', proj.id]" *ngIf="appComponent.currentUser">Reservation</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+ </div>

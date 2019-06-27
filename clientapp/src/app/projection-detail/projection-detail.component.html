@@ -1,0 +1,65 @@
+<div *ngIf="appComponent.currentUser">
+  <div *ngIf="projection" class="text-center">
+    <div class="text-left"><small><a routerLink="/projections">Projections</a> > Detail</small></div>
+    <h2>Projection details</h2>
+    <div class="col-md-12">
+      <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>Movie</th>
+          <th>Cinema</th>
+          <th>Room</th>
+          <th>Date</th>
+          <th>Start time</th>
+          <th>End time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>{{ projection.movie.name }}</td>
+          <td>{{ projection.room.cinema.name }}</td>
+          <td>{{ projection.room.number }}</td>
+          <td>{{ projection.date }}</td>
+          <td>{{ projection.start_time }}</td>
+          <td>{{ projection.end_time }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col col-md-12">
+      <h3 class="text-left">Select seats:</h3>
+
+
+      <div class="col col-md-12">
+        <div class="col-md-4"><h5 class="text-left">Subtotal $: {{ total_price }}</h5></div>
+        <div class="col-md-12 text-right"><button class="btn btn-primary right" (click)="book()">Book</button></div>
+
+        <hr class="text-center">
+          SCREEN
+        <hr>
+      </div>
+      <div class="col col-md-6">
+        <div class="text-left">
+          <span class="text-success">Free</span>
+          /<span class="text-danger">Ocupied</span>/
+          <span class="text-warning">Selected</span>
+        </div>
+        <table class="table table-condensed table-bordered">
+          <tr *ngFor="let row of rows">
+            <td *ngFor="let col of columns">
+              <button id="seat_{{ projection.room.num_columns * row + col }}"
+                    [ngStyle]="{'background-color': seat_color[projection.room.num_columns * row + col] }"
+                    (click)="manageSeat(projection.room.num_columns * row + col)"
+                    [disabled]="!seats_availability[projection.room.num_columns * row + col]"
+                    title="$ {{seats_prices[projection.room.num_columns * row + col]}}">
+                {{ projection.room.num_columns * row + col }}
+              </button>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-md-12 text-right"><button class="btn btn-primary right" (click)="book()">Book</button></div>
+    </div>
+  </div>
+</div>

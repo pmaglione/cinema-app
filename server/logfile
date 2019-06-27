@@ -1,0 +1,8 @@
+2019-06-12 17:56:23.947 CEST [66241] LOG:  listening on IPv6 address "::1", port 5432
+2019-06-12 17:56:23.947 CEST [66241] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2019-06-12 17:56:23.948 CEST [66241] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2019-06-12 17:56:23.970 CEST [66242] LOG:  database system was shut down at 2019-06-12 14:23:34 CEST
+2019-06-12 17:56:23.975 CEST [66241] LOG:  database system is ready to accept connections
+2019-06-12 17:56:41.071 CEST [66439] FATAL:  role "postgres" does not exist
+2019-06-12 17:57:34.726 CEST [66918] FATAL:  role "postgres" does not exist
+2019-06-12 18:13:46.812 CEST [75803] FATAL:  role "postgres" does not exist

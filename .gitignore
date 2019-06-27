@@ -1,0 +1,6 @@
+.idea/
+server/__pycache__/
+server/reservations/__pycache__/
+server/cinema_app_sample/__pycache__/
+node_modules/
+cinema_env/

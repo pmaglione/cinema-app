@@ -1,0 +1,43 @@
+<div class="content">
+  <div class="text-left"><small><a routerLink="/projections">Projections</a> > Reservations</small></div>
+  <div class="col col-md-12">
+    <h3>Your reservations: </h3>
+  </div>
+
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Created Date</th>
+        <th>Seats</th>
+        <th>Price</th>
+        <th>Movie</th>
+        <th>Cinema</th>
+        <th>Room</th>
+        <th>Date</th>
+        <th>Start</th>
+        <th>State</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let res of reservations">
+        <td>{{ res.created_date }}</td>
+        <td>{{ res.seats }}</td>
+        <td>$ {{ getPrice(res.seats, res.projection.room.prices) }}</td>
+        <td>{{ res.projection.movie.name }}</td>
+        <td>{{ res.projection.room.cinema.name }}</td>
+        <td>{{ res.projection.room.number }}</td>
+        <td>{{ res.projection.date }}</td>
+        <td>{{ res.projection.start_time }}</td>
+        <td>{{ res.state.name }}</td>
+        <td>
+          <button *ngIf="showByState(res.state.name)" class="btn btn-primary" (click)="checkout(res.id)">Checkout</button>
+          &nbsp;
+          <button *ngIf="showByState(res.state.name)" class="btn btn-danger" (click)="cancel(res.id)">Cancel</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+ </div>

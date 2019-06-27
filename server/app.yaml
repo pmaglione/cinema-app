@@ -1,0 +1,20 @@
+# [START django_app]
+runtime: python37
+
+handlers:
+# This configures Google App Engine to serve the files in the app's
+# static directory.
+- url: /static
+  static_dir: cinema_app_sample/static/
+# This handler routes all requests not caught above to the main app.
+# It is required when static routes are defined, but can be omitted
+# (along with the entire handlers section) when there are no static
+# files defined.
+- url: /.*
+  script: auto
+
+network:
+  session_affinity: true
+
+readiness_check:
+  app_start_timeout_sec: 1800
